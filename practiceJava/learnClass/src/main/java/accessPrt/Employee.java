@@ -1,9 +1,9 @@
-package org.example;
+package accessPrt;
 
 public class Employee {
     private String name;
-    private int age;
     private double salary;
+    private int age;
 
     public String getName() {
         return name;
@@ -11,14 +11,6 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public double getSalary() {
@@ -29,17 +21,25 @@ public class Employee {
         this.salary = salary;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Employee(String name, double salary, int age) {
+        this.name = name;
+        this.salary = salary;
+        this.age = age;
+    }
+
     public void work() {
-        System.out.println(name + " is working");
+        System.out.println(name + " is working.");
     }
 
     protected void increaseSalary(double amount) {
         salary += amount;
-    }
-
-    public Employee(String name, int age, double salary) {
-        this.name = name;
-        this.age = age;
-        this.salary = salary;
     }
 }
