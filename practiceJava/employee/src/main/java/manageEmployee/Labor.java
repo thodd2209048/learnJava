@@ -3,6 +3,9 @@ package manageEmployee;
 public class Labor extends Employee {
     private LaborLevel level;
 
+    public Labor() {
+
+    }
 
 
     public LaborLevel getLevel() {

@@ -41,6 +41,7 @@ public class Main {
 
             if (option == 2) {
                 System.out.println("Vui long nhap thong tin nhan vien moi");
+
                 System.out.println("Ten: ");
                 String newName = scanner.next();
                 System.out.println("Tuoi: ");
@@ -90,4 +91,5 @@ public class Main {
             }
         }
     }
+
 }

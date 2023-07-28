@@ -3,6 +3,10 @@ package manageEmployee;
 public class Officer extends Employee{
     private int Exp;
 
+    public Officer() {
+
+    }
+
     public int getExp() {
         return Exp;
     }

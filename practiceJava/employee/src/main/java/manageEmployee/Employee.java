@@ -9,6 +9,10 @@ public class Employee {
     private String address;
     private int baseCode;
 
+    public Employee() {
+
+    }
+
     private int generateCode()  {
         StringBuilder concatenatedData = new StringBuilder();
         Field[] fields = this.getClass().getDeclaredFields();

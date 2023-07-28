@@ -9,6 +9,10 @@ public class Engineer extends Employee {
     private EngineerLevel level;
     private int baseCode;
 
+    public Engineer() {
+
+    }
+
     public EngineerMajor getMajor() {
         return major;
     }
