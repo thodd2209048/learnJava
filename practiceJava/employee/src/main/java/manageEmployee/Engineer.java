@@ -1,6 +1,5 @@
 package manageEmployee;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +9,6 @@ public class Engineer extends Employee {
     private int baseCode;
 
     public Engineer() {
-
     }
 
     public EngineerMajor getMajor() {
@@ -33,7 +31,7 @@ public class Engineer extends Employee {
         super(name, age, gender, address);
         this.major = major;
         this.level = level;
-
+        this.baseCode = generateCode();
     }
 
 

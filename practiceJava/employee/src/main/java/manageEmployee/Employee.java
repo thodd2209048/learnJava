@@ -13,14 +13,16 @@ public class Employee {
 
     }
 
-    private int generateCode()  {
+    int generateCode()  {
         StringBuilder concatenatedData = new StringBuilder();
         Field[] fields = this.getClass().getDeclaredFields();
         String classString = String.valueOf(this.getClass());
         try {
             for(Field field: fields) {
                 field.setAccessible(true);
-                concatenatedData.append(field.getName()).append(field.get(this));
+                if (!field.getName().equals("baseCode")){
+                    concatenatedData.append(field.getName()).append(field.get(this));
+                }
             }
         }
         catch (IllegalAccessException e) {

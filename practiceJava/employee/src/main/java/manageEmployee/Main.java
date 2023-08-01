@@ -12,6 +12,11 @@ public class Main {
         Labor employee2 = new Labor("Bac", 35, Gender.MALE, "Hai Phong", LaborLevel.LEVEL_7);
         Engineer employee3 = new Engineer("Chuc", 22, Gender.FEMALE, "Bac Ninh", EngineerMajor.ELECTRONIC, EngineerLevel.FRESHER);
         Officer employee4 = new Officer("Duong", 23, Gender.FEMALE, "Thai Nguyen", 3);
+        Engineer employee5 = new Engineer("Anh", 32, Gender.MALE, "Ha Noi", EngineerMajor.ELECTRONIC, EngineerLevel.FRESHER);
+
+        System.out.println(employee1.getBaseCode());
+        System.out.println(employee5.getBaseCode());
+        System.out.println(employee3.getBaseCode());
 
         ArrayList<Employee> employeeList = new ArrayList<>();
         employeeList.add(employee1);

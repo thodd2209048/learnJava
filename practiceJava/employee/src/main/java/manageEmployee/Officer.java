@@ -2,6 +2,7 @@ package manageEmployee;
 
 public class Officer extends Employee{
     private int Exp;
+    private int baseCode;
 
     public Officer() {
 
@@ -18,6 +19,7 @@ public class Officer extends Employee{
     public Officer(String name, int age, Gender gender, String address, int exp) {
         super(name, age, gender, address);
         Exp = exp;
+        this.baseCode = generateCode();
     }
 
     public double getSalary() {

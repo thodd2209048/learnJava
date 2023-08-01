@@ -2,6 +2,7 @@ package manageEmployee;
 
 public class Labor extends Employee {
     private LaborLevel level;
+    private int baseCode;
 
     public Labor() {
 
@@ -19,6 +20,7 @@ public class Labor extends Employee {
     public Labor(String name, int age, Gender gender, String address, LaborLevel level) {
         super(name, age, gender, address);
         this.level = level;
+        this.baseCode = generateCode();
     }
 
     public double getSalary() {

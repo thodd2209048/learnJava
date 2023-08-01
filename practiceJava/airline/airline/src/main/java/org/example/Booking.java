@@ -1,17 +1,18 @@
 package org.example;
 
 import java.lang.reflect.Field;
+import java.time.LocalDate;
 
 public class Booking {
     private String bookingID;
-    private String departureDate;
+    private LocalDate departureDate;
     private int numberOfTickets;
     private double price;
     private String cabinType;
     private double totalPrice;
     private String destination;
 
-    public Booking(String bookingID, String departureDate, int numberOfTickets, double price, String cabinType, String destination) {
+    public Booking(String bookingID, LocalDate departureDate, int numberOfTickets, double price, String cabinType, String destination) {
         this.bookingID = bookingID;
         this.departureDate = departureDate;
         this.numberOfTickets = numberOfTickets;
@@ -43,11 +44,11 @@ public class Booking {
         this.bookingID = bookingID;
     }
 
-    public String getDepartureDate() {
+    public LocalDate getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(String departureDate) {
+    public void setDepartureDate(LocalDate departureDate) {
         this.departureDate = departureDate;
     }
 
