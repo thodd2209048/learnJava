@@ -1,12 +1,13 @@
 package manageEmployee;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Labor extends Employee {
     private LaborLevel level;
-    private int baseCode;
-
-    public Labor() {
-
-    }
+    private StringBuilder baseCode;
 
 
     public LaborLevel getLevel() {

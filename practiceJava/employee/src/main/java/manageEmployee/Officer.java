@@ -4,9 +4,6 @@ public class Officer extends Employee{
     private int Exp;
     private int baseCode;
 
-    public Officer() {
-
-    }
 
     public int getExp() {
         return Exp;
@@ -19,7 +16,7 @@ public class Officer extends Employee{
     public Officer(String name, int age, Gender gender, String address, int exp) {
         super(name, age, gender, address);
         Exp = exp;
-        this.baseCode = generateCode();
+//        this.baseCode = generateCode();
     }
 
     public double getSalary() {

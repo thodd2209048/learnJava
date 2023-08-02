@@ -1,39 +1,52 @@
 package manageEmployee;
 
-import java.util.HashMap;
-import java.util.Map;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.lang.reflect.Field;
+import java.util.*;
+
+@Getter @Setter
 public class Engineer extends Employee {
     private EngineerMajor major;
     private EngineerLevel level;
-    private int baseCode;
-
-    public Engineer() {
-    }
-
-    public EngineerMajor getMajor() {
-        return major;
-    }
-
-    public void setMajor(EngineerMajor major) {
-        this.major = major;
-    }
-
-    public EngineerLevel getLevel() {
-        return level;
-    }
-
-    public void setLevel(EngineerLevel level) {
-        this.level = level;
-    }
+    private StringBuilder codeBase;
 
     public Engineer(String name, int age, Gender gender, String address, EngineerMajor major, EngineerLevel level) {
         super(name, age, gender, address);
         this.major = major;
         this.level = level;
-        this.baseCode = generateCode();
+        this.codeBase = generateCode();
     }
 
+    StringBuilder generateCode() {
+        StringBuilder concatenatedData = new StringBuilder();
+        Class<?> employeeClass = this.getClass();
+        List<Field> fields = getAllFields(new ArrayList<>(), employeeClass);
+        try {
+            for (Field field : fields
+            ) {
+                field.setAccessible(true);
+                if (!field.getName().equals("baseCode")) {
+                    concatenatedData.append(field.getName()).append(field.get(this));
+                    System.out.println(field);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return concatenatedData;
+    }
+
+    private static List<Field> getAllFields(List<Field> fields, Class<?> type) {
+
+        fields.addAll(Arrays.asList(type.getDeclaredFields()));
+        if(type.getSuperclass() != null) {
+            getAllFields(fields, type.getSuperclass());
+        }
+        return fields;
+    }
 
     public double getSalary() {
         Map<EngineerMajor, Double> mapMajorBaseSalary = new HashMap<>();
