@@ -2,31 +2,27 @@ package org.example;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
         List<Student> students = List.of(
-                new Student("Alice", 10, "Ams"),
-                new Student("Bob", 12, "NguyenTatThanh"),
-                new Student("Elsa", 10, "NguyenTatThanh")
+                new Student("Alice", 10, "ams"),
+                new Student("Bob", 12, "ntt"),
+                new Student("Elsa", 10, "ntt")
         );
 
         List<School> schools = List.of(
-                new School("Ams", "Ams", "hanoi"),
-                new School("NguyenTatThanh", "NguyenTatThanh", "hanoi")
+                new School("ams", "Ams", "hanoi"),
+                new School("ntt", "NguyenTatThanh", "hanoi")
         );
 
 
-        Map<School, List<Student>> groupBySchool = students.stream().collect(Collectors.groupingBy(s -> {
-            String nameSchool = s.getSchoolId();
 
-            School schoolResult = schools.stream().filter(school -> {
-                return school.getSchoolId().equals(nameSchool);
-            }).findFirst().orElse(null);
+        Map<String, School> schoolMap = schools.stream().collect(Collectors.toMap(School::getSchoolId, Function.identity()));
 
-            return schoolResult;
-        }));
+        Map<School, List<Student>> groupBySchool = students.stream().collect(Collectors.groupingBy(s -> schoolMap.get(s.getSchoolId())));
 
         for( School key : groupBySchool.keySet()) {
             System.out.println(key);
