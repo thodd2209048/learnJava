@@ -1,7 +1,9 @@
-package org.example;
+package practice;
 
 import org.apache.lucene.util.SloppyMath;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -137,7 +139,7 @@ public class Main {
 
         Inventory inventory2Store5 = Inventory.builder()
                 .storeCode("ST005")
-                .sku("CM001")
+                .sku("CM003")
                 .quantity(17)
                 .build();
 
@@ -153,65 +155,30 @@ public class Main {
         //SOLUTION
         List<Store> storeList = List.of(store1, store2, store3, store4, store5);
         List<Zipcode> zipcodeList = List.of(zipcode1, zipcode2, zipcode3, zipcode4, zipcode5, zipcode6);
-        String targetZipcodeString = "56790";
 
         List<Store> result = storeList.stream()
                 .filter(s -> {
-                    Double[] latLngTarget = zipcodeList.stream()
-                            .filter(z -> z.getZipcode().equals(buyer1.getZipcode()))
-                            .findFirst()
-                            .map(z -> new Double[]{z.getLat(), z.getLng()})
-                            .orElseThrow(() -> new RuntimeException("Can not find zipcode."));
-
-                    Double[] latLngStore = zipcodeList.stream()
+                    List<Double> latLng = new ArrayList<>();
+                    zipcodeList.stream()
                             .filter(z -> z.getZipcode().equals(s.getZipcode()))
                             .findFirst()
-                            .map(z -> new Double[]{z.getLat(), z.getLng()})
-                            .orElseThrow(() -> new RuntimeException("Can not find zipcode."));
-
-                    return SloppyMath.haversinMeters(latLngStore[0], latLngStore[1], latLngTarget[0], latLngTarget[1]) < 300000;
+                            .map(z -> latLng.addAll(Arrays.asList(z.getLat(), z.getLng())))
+                            .orElseThrow(() -> new RuntimeException("Can not find Store's zipcode"));
+                    zipcodeList.stream()
+                            .filter(z -> z.getZipcode().equals(buyer1.getZipcode()))
+                            .findFirst()
+                            .map(z -> latLng.addAll(Arrays.asList(z.getLat(), z.getLng())))
+                            .orElseThrow(() -> new RuntimeException("Can not find Store's zipcode"));
+                    return SloppyMath.haversinMeters(latLng.get(0), latLng.get(1), latLng.get(2), latLng.get(3)) < 300000;
                 })
                 .filter(s -> inventoryList.stream()
                         .anyMatch(i -> i.getStoreCode().equals(s.getStoreCode()) &&
                                 i.getSku().equals(buyer1.getSku()) &&
                                 i.getQuantity() > 0
-                        ))
+                        )
+                )
                 .toList();
 
         System.out.println(result);
-
-
-
-//        Zipcode targetZipcode = zipcodeList.stream()
-//                .filter(z -> z.getZipcode().equals(targetZipcodeString))
-//                .findFirst()
-//                .orElse(null);
-//
-//        List<Zipcode> nearbyZipcodes = zipcodeList.stream()
-//                .filter(z -> SloppyMath.haversinMeters(
-//                        z.getLat(), z.getLng(), targetZipcode.getLat(), targetZipcode.getLng()
-//                ) < 300000)
-//                .toList();
-//
-//        List<String> nearbyZipcodeString = nearbyZipcodes.stream()
-//                .map(Zipcode::getZipcode)
-//                .toList();
-//
-//        List<Store> nearbyStore = storeList.stream()
-//                .filter(s -> nearbyZipcodeString.contains(s.getZipcode()))
-//                .toList();
-//
-//        List<String> nearbyStoreCode = nearbyStore.stream()
-//                .map(s -> s.getStoreCode())
-//                .toList();
-//
-//        List<Inventory> nearByInventory = inventoryList.stream()
-//                .filter(i -> nearbyStoreCode.contains(i.getStoreCode()))
-//                .filter(i -> i.getSku().equals(buyer1.getSku()))
-//                .filter(i -> i.getQuantity() > 0)
-//                .toList();
-//
-//        System.out.println(nearByInventory);
     }
-
 }
