@@ -48,8 +48,31 @@ public class Main {
                 .startTime(ZonedDateTime.of(2023, 8, 5, 8, 0, 0, 0, ZoneId.of("Asia/Bangkok")))
                 .endTime(ZonedDateTime.of(2023, 8, 5, 10, 0, 0, 0, ZoneId.of("Asia/Bangkok")))
                 .build();
+        OverseaFlight flightB = OverseaFlight.builder()
+                .number(2)
+                .departureCity(saigon)
+                .destinationCity(tokyo)
+                .startTime(ZonedDateTime.of(2023, 8, 5, 8, 0, 0, 0, ZoneId.of("Asia/Bangkok")))
+                .endTime(ZonedDateTime.of(2023, 8, 5, 10, 0, 0, 0, ZoneId.of("Asia/Bangkok")))
+                .build();
+        DomesticFlight flightC = DomesticFlight.builder()
+                .number(3)
+                .departureCity(saigon)
+                .destinationCity(hanoi)
+                .startTime(ZonedDateTime.of(2023, 8, 5, 8, 0, 0, 0, ZoneId.of("Asia/Bangkok")))
+                .endTime(ZonedDateTime.of(2023, 8, 5, 10, 0, 0, 0, ZoneId.of("Asia/Bangkok")))
+                .build();
 
-        System.out.println(flightA.getPrice());
+        List<Flight> flightList = List.of(flightA, flightB, flightC);
+        for (Flight flight: flightList
+             ) {
+            if(flight instanceof DomesticFlight) {
+                System.out.println(((DomesticFlight) flight).getPrice());
+            }
+            if (flight instanceof OverseaFlight) {
+                System.out.println(((OverseaFlight) flight).getPrice());;
+            }
+        }
     }
 
 }

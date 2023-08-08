@@ -20,13 +20,8 @@ public class OverseaFlight extends Flight {
         Continent departureContinent = this.getDepartureCity().getContinent();
         Continent destinationContinent = this.getDestinationCity().getContinent();
 
-        double distance = getDistance(lat1, lat2, lon1, lon2);
-        double price;
-        if(destinationContinent == departureContinent) {
-            price = 1490  * distance;
-        } else {
-            price = 1780  * distance;
-        }
+        double distance = Utils.getDistance(lat1, lat2, lon1, lon2);
+        double price = destinationContinent == departureContinent ? 1490 * distance : 1780 * distance;
 
         return price;
     }

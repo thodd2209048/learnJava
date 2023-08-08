@@ -1,0 +1,2 @@
+zipcode => List<zipcode> => List<store> => List<inventory>
+filter store, prodcut, quantity>0
