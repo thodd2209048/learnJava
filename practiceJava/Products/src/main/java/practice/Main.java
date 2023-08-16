@@ -163,7 +163,8 @@ public class Main {
                             .filter(z -> z.getZipcode().equals(s.getZipcode()))
                             .findFirst()
                             .map(z -> latLng.addAll(Arrays.asList(z.getLat(), z.getLng())))
-                            .orElseThrow(() -> new RuntimeException("Can not find Store's zipcode"));
+                            .orElseThrow(() -> new RuntimeException("Can not find Customer's zipcode"));
+
                     zipcodeList.stream()
                             .filter(z -> z.getZipcode().equals(buyer1.getZipcode()))
                             .findFirst()
