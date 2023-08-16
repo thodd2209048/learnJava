@@ -23,7 +23,7 @@ public class Student {
     }
 
     private void validateDob(LocalDate dob){
-        if (dob.getYear() <= 2006 || dob.getYear() >= 2017) {
+        if (dob.getYear() < 2006 || dob.getYear() > 2017) {
          throw new InvalidDobException(dob);
         }
     }
