@@ -1,31 +1,37 @@
 package org.example;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Student {
     private String name;
     private Gender gender;
     private LocalDate dob;
 
-    public Student(String name, Gender gender, LocalDate dob) {
-        validateDob(dob);
-        validateName(name);
+    public Student(String name, Gender gender, LocalDate dob) throws InputException {
+        List<CommonException> errors = new ArrayList<>();
+        if (validateName(name)) {
+            errors.add(new InvalidNameException(name));
+        }
+        if(validateDob(dob)) {
+            errors.add(new InvalidDobException(dob));
+        }
+        if (!errors.isEmpty()) {
+            throw new InputException(errors);
+        }
 
         this.name = name;
         this.gender = gender;
         this.dob = dob;
     }
 
-    private void validateName(String name) {
-        if(!name.matches("[a-zA-Z ]+")){
-            throw new InvalidNameException(name);
-        }
+    private boolean validateName(String name) {
+        return !name.matches("[a-zA-Z ]+");
     }
 
-    private void validateDob(LocalDate dob){
-        if (dob.getYear() < 2006 || dob.getYear() > 2017) {
-         throw new InvalidDobException(dob);
-        }
+    private boolean validateDob(LocalDate dob){
+        return (dob.getYear() < 2006 || dob.getYear() > 2017) ;
     }
 
     public String getName() {
