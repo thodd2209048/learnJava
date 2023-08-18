@@ -32,7 +32,7 @@ public class Main {
 //        }
 
 //        Print
-        for (Record record: myDatabase.getRecords()
+        for (Object record: myDatabase.getRecords()
              ) {
             System.out.println(record);
         }
