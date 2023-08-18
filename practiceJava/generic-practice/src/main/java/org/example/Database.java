@@ -1,8 +1,5 @@
 package org.example;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.lang.reflect.Array;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +10,13 @@ public class Database {
 
     public void save(Record record) {
         if (record.getId() == null) {
-            Integer maxId = records.stream().map(Record::getId).max(Integer::compareTo).orElse(null);
-            record.setId(maxId == null ? 1 : maxId + 1);
+            Integer maxId = records.stream().map(Record::getId).max(Integer::compareTo).orElse(0);
+            record.setId(maxId + 1);
         } else {
             Record recordOptional = find(record.getId());
             if(recordOptional != null) {
-                recordOptional = record;
+                Integer index = records.indexOf(recordOptional);
+                records.set(index, record);
                 return;
             }
         }
@@ -40,11 +38,11 @@ public class Database {
     }
 
     public List<Record> findByCreatedAtAfter(ZonedDateTime time) {
-        return records.stream().filter(r -> r.getCreatedAt() != null && r.getCreatedAt().compareTo(time) >=0).toList();
+        return records.stream().filter(r -> r.getCreatedAt() != null && r.getCreatedAt().isAfter(time)).toList();
     }
 
     public List<Record> findByUpdatedAtAfter(ZonedDateTime time) {
-        return records.stream().filter(r -> r.getUpdatedAt() != null && r.getUpdatedAt().compareTo(time) >=0).toList();
+        return records.stream().filter(r -> r.getUpdatedAt() != null && r.getUpdatedAt().isAfter(time)).toList();
     }
 
 

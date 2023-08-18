@@ -34,4 +34,12 @@ public class Student extends Record{
     public void setDob(LocalDate dob) {
         this.dob = dob;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", dob=" + dob +
+                '}';
+    }
 }

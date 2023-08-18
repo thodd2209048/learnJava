@@ -33,4 +33,12 @@ public class School extends Record{
     public void setAddress(String address) {
         this.address = address;
     }
+
+    @Override
+    public String toString() {
+        return "School{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }

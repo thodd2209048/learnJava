@@ -23,18 +23,18 @@ public class Main {
         Database myDatabase = new Database(myRecord);
 
 
-        Record newRecord = new Student(3, "Cong", LocalDate.of(2005, 3, 2));
+        Record newRecord = new Student(2, "Cong", LocalDate.of(2005, 3, 2));
         myDatabase.save(newRecord);
 
-        List<Record> result = myDatabase.findByUpdatedAtAfter(ZonedDateTime.parse("2023-08-01T10:00:00+00:00"));
-        for (Record r: result) {
-            System.out.println(r);
-        }
+//        List<Record> result = myDatabase.findByUpdatedAtAfter(ZonedDateTime.parse("2023-08-01T10:00:00+00:00"));
+//        for (Record r: result) {
+//            System.out.println(r);
+//        }
 
 //        Print
-//        for (Record record: myDatabase.getRecords()
-//             ) {
-//            System.out.println(record);
-//        }
+        for (Record record: myDatabase.getRecords()
+             ) {
+            System.out.println(record);
+        }
     }
 }
