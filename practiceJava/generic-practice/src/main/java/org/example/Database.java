@@ -16,11 +16,12 @@ public class Database <T extends Record> {
             T recordOptional = find(record.getId());
             if(recordOptional != null) {
                 Integer index = records.indexOf(recordOptional);
+                record.setUpdatedAt(ZonedDateTime.now());
                 records.set(index, record);
                 return;
             }
         }
-
+        record.setCreatedAt(ZonedDateTime.now());
         records.add(record);
     }
 

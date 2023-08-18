@@ -16,6 +16,14 @@ public abstract class Record {
         this.id = id;
     }
 
+    public void setCreatedAt(ZonedDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setUpdatedAt(ZonedDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     public ZonedDateTime getCreatedAt() {
         return createdAt;
     }
