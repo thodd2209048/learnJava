@@ -32,6 +32,8 @@ public abstract class Record {
         return updatedAt;
     }
 
+
+
     public Record(Integer id) {
         this.id = id;
     }

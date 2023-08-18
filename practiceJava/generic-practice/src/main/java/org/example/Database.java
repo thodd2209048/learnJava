@@ -9,20 +9,18 @@ public class Database <T extends Record> {
     private ArrayList<T> records = new ArrayList<>();
 
     public void save(T record) {
-        if (record.getId() == null) {
-            Integer maxId = records.stream().map(T::getId).max(Integer::compareTo).orElse(0);
-            record.setId(maxId + 1);
-        } else {
-            T recordOptional = find(record.getId());
-            if(recordOptional != null) {
-                Integer index = records.indexOf(recordOptional);
-                record.setUpdatedAt(ZonedDateTime.now());
-                records.set(index, record);
-                return;
-            }
+        if (record.getId() == null || find(record.getId()) == null) {
+            record.setCreatedAt(ZonedDateTime.now());
+            records.add(record);
+            return;
         }
-        record.setCreatedAt(ZonedDateTime.now());
-        records.add(record);
+        Record recordOptional = find(record.getId());
+        if(recordOptional.equals(record)) {
+            return;
+        }
+        Integer index = records.indexOf(recordOptional);
+        record.setUpdatedAt(ZonedDateTime.now());
+        records.set(index, record);
     }
 
     public T find(Integer id) {
