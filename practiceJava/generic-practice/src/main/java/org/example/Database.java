@@ -9,13 +9,18 @@ public class Database <T extends Record> {
     private ArrayList<T> records = new ArrayList<>();
 
     public void save(T record) {
+        Integer maxId = records.stream().map(Record::getId).max(Integer::compareTo).orElse(0);
         if (record.getId() == null || find(record.getId()) == null) {
+            if (record.getId() == null) {
+                record.setId(maxId + 1);
+            }
             record.setCreatedAt(ZonedDateTime.now());
             records.add(record);
             return;
         }
+
         Record recordOptional = find(record.getId());
-        if(recordOptional.equals(record)) {
+        if (recordOptional.equals(record)) {
             return;
         }
         Integer index = records.indexOf(recordOptional);
@@ -37,11 +42,11 @@ public class Database <T extends Record> {
     }
 
     public List<T> findByCreatedAtAfter(ZonedDateTime time) {
-        return records.stream().filter(r -> r.getCreatedAt() != null && r.getCreatedAt().isAfter(time)).toList();
+        return records.stream().filter(r -> r.getCreatedAt() != null && !r.getCreatedAt().isBefore(time)).toList();
     }
 
     public List<T> findByUpdatedAtAfter(ZonedDateTime time) {
-        return records.stream().filter(r -> r.getUpdatedAt() != null && r.getUpdatedAt().isAfter(time)).toList();
+        return records.stream().filter(r -> r.getUpdatedAt() != null && !r.getUpdatedAt().isBefore(time)).toList();
     }
 
 
