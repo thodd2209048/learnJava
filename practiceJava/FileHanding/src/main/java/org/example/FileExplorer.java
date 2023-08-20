@@ -7,25 +7,22 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class FileExplorer {
     private Path path;
 
     public FileExplorer() {
         String os = System.getProperty("os.name").toLowerCase();
-        if (os.contains("win")){
-            path = Paths.get("D:\\");
-        } else {
-            path = Paths.get("/");
-        }
+        path = os.contains("win")? Paths.get("D:\\") : Paths.get("/");
     }
 
     public List<File> list() {
-        return Arrays.stream(new File(String.valueOf(path)).listFiles()).toList();
+        return Arrays.stream(path.toFile().listFiles()).toList();
     }
 
     public String enter(String name) {
-        Path targetPath = Paths.get(path + "/" + name);
+        Path targetPath = path.resolve(name);
         if(!Files.exists(targetPath)) {
             throw new RuntimeException("File/Folder not found");
         } else if (Files.isDirectory(targetPath)) {

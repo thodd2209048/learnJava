@@ -1,5 +1,6 @@
 package org.example;
 
+import java.io.File;
 import java.util.Scanner;
 
 public class Main {
@@ -10,6 +11,9 @@ public class Main {
 //        fileExplorer.createFolder("thung rac");
 
 //        fileExplorer.delete("thung rac");
-        fileExplorer.rename("doa hoa", "thungrac");
+        for (File file: fileExplorer.list()
+             ) {
+            System.out.println(file);
+        }
     }
 }
