@@ -16,9 +16,9 @@ public class UseCompletableFuture {
         List<CompletableFuture<Integer>> completableFutures = new ArrayList<>();
 
         Files.list(currentPath).forEach(p -> {
-           CompletableFuture<Integer> future = CompletableFuture.supplyAsync(()->{
+            CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
                 try {
-                   return Files.readAllLines(p).stream().mapToInt(Integer::parseInt).sum();
+                    return Files.readAllLines(p).stream().mapToInt(Integer::parseInt).sum();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -30,10 +30,11 @@ public class UseCompletableFuture {
                 completableFutures.toArray(new CompletableFuture[completableFutures.size()])
         );
 
-        allOf.thenRun(()->{
-            for (CompletableFuture<Integer> future: completableFutures
-                 ) {
+        allOf.thenRun(() -> {
+            for (CompletableFuture<Integer> future : completableFutures
+            ) {
                 try {
+
                     result.add(future.get());
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
