@@ -38,31 +38,6 @@ public class StudentService {
         studentRepository.deleteById(id);
     }
 
-//    @Transactional
-//    public void updateStudent(Long id, String name, String email) {
-//        Student student = studentRepository.findById(id)
-//                .orElseThrow(() -> (
-//                        new IllegalStateException("Student with id " + id + " does not exists")
-//                ));
-//
-//        if (name != null &&
-//                !name.isEmpty() &&
-//                Objects.equals(student.getName(), name)) {
-//            student.setName(name);
-//        }
-//
-//        if (email != null &&
-//                !email.isEmpty() &&
-//                Objects.equals(email, student.getEmail())
-//        ) {
-//            Optional<Student> studentOptional = studentRepository.findStudentByEmail(email);
-//            if (studentOptional.isPresent()) {
-//                throw new IllegalStateException("Email is taken");
-//            }
-//            student.setEmail(email);
-//        }
-//    }
-
     @Transactional
     public void updateStudent(Long id, String name, String email) {
         Student student = studentRepository.findById(id)

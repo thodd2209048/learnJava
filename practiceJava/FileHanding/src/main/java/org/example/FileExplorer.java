@@ -1,5 +1,7 @@
 package org.example;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,7 +11,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-public class FileExplorer {
+
+public class FileExplorer  extends Thread{
     private Path path;
 
     public FileExplorer() {
@@ -32,7 +35,7 @@ public class FileExplorer {
             try {
                 return Files.readString(targetPath);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }
         return String.valueOf(path);
@@ -56,23 +59,31 @@ public class FileExplorer {
         }
     }
 
-    public void delete(String name){
+    public void delete(String name)  {
         Path targetPath = path.resolve(name);
+        if(!Files.exists(targetPath)){
+            throw new RuntimeException("File not found");
+        }
         try {
-            Files.delete(targetPath);
+            FileUtils.deleteDirectory(targetPath.toFile());
         } catch (IOException e) {
-            throw new RuntimeException("File/Folder not found");
+            e.printStackTrace();
         }
     }
 
     public void rename(String name, String newName){
         Path oldPath = path.resolve(name);
         Path newPath = path.resolve(newName);
-
+        if(!Files.exists(oldPath)){
+            throw new RuntimeException("File not found");
+        }
         try {
             Files.move(oldPath, newPath);
         } catch (IOException e) {
-            throw new RuntimeException("File/Folder not found");
+            e.printStackTrace();
         }
     }
+
+
+
 }
