@@ -18,12 +18,14 @@ import java.util.List;
 public class School {
     private Integer id;
     private String name;
+    private String code;
+    private String address;
     private ZonedDateTime createdAt;
     private ZonedDateTime updatedAt;
 
-    List<School> readSchools(String fileName) throws IOException {
+    public static List<School> readSchools(String fileName) throws IOException {
         List<School> schools = new ArrayList<>();
-        String[] HEADERS = {"Id", "Name", "Created At", "Updated At"};
+        String[] HEADERS = {"#", "Name", "Code", "Address"};
         Reader in = new FileReader(fileName);
 
         CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
@@ -32,17 +34,36 @@ public class School {
                 .build();
 
         Iterable<CSVRecord> records = csvFormat.parse(in);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy - HH:mm:ss z");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy/MM/dd - HH:mm:ss z");
 
         for (CSVRecord record : records
         ) {
-            Integer id = Integer.valueOf(record.get("Id"));
+            Integer id = Integer.valueOf(record.get("#"));
             String name = record.get("Name");
-            ZonedDateTime createdAt = ZonedDateTime.parse(record.get("Created At"), formatter);
-            ZonedDateTime updatedAt = ZonedDateTime.parse(record.get("Updated At"), formatter);
-            schools.add(new School(id, name, createdAt, updatedAt));
+            String code = record.get("Code");
+            String address = record.get("Address");
+//            ZonedDateTime createdAt = ZonedDateTime.parse(record.get("Created At"), formatter);
+//            ZonedDateTime updatedAt = ZonedDateTime.parse(record.get("Updated At"), formatter);
+            schools.add(new School(id, name, code, address));
         }
 
         return schools;
+    }
+
+    public School(Integer id, String name, String code, String address) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+        this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "School{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", code='" + code + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }
