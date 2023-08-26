@@ -39,18 +39,18 @@ public class CreateTable {
                 "        primary key (code)\n" +
                 ");\n" +
                 "\n");
-        statement.executeUpdate("create table school_thodd\n" +
-                "(\n" +
-                "    id          serial,\n" +
-                "    name  varchar   not null,\n" +
-                "    code        varchar   not null,\n" +
-                "    address varchar not null,\n" +
-                "    created_at  timestamp not null,\n" +
-                "    updated_at  timestamp not null,\n" +
-                "    constraint school_thodd_pk\n" +
-                "        primary key (code)\n" +
-                ");\n" +
-                "\n");
+//        statement.executeUpdate("create table school_thodd\n" +
+//                "(\n" +
+//                "    id          serial,\n" +
+//                "    name  varchar   not null,\n" +
+//                "    code        varchar   not null,\n" +
+//                "    address varchar not null,\n" +
+//                "    created_at  timestamp not null,\n" +
+//                "    updated_at  timestamp not null,\n" +
+//                "    constraint school_thodd_pk\n" +
+//                "        primary key (code)\n" +
+//                ");\n" +
+//                "\n");
 
         statement.close();
         connection.close();
