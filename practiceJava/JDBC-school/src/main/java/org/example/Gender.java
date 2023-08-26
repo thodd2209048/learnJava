@@ -10,10 +10,10 @@ public enum Gender {
     private final String value;
 
     public static Gender convert(String value){
-        if(MALE.getValue().equals(value)){
+        if(value.equals(MALE.getValue())){
             return MALE;
         }
-        if(FEMALE.getValue().equals(value)){
+        if(value.equals(FEMALE.getValue())){
             return FEMALE;
         }
         return null;
