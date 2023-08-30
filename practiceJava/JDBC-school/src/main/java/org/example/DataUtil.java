@@ -251,4 +251,18 @@ public class DataUtil {
                 return null;
         }
     }
+
+    public static <T> T getInfoFromField( ResultSet resultSet,T field, String columnName) throws SQLException, NoSuchFieldException {
+
+        if (field.getClass().equals("String")) {
+            return (T) resultSet.getString(columnName);
+        } else if (field.getClass().equals("Gender")) {
+            return (T) Gender.convert(resultSet.getString(columnName));
+        } else if (field.getClass().equals("LocalDate")) {
+            return (T) resultSet.getDate(columnName).toLocalDate();
+        } else if (field.getClass().equals("ZonedDateTime")) {
+            return (T) resultSet.getTimestamp(columnName).toLocalDateTime().atZone(ZoneId.of("+07:00"));
+        }
+        return null;
+    }
 }
