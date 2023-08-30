@@ -10,11 +10,12 @@ public class Main {
 //        DataUtil.insertOrUpdateStudents(students);
 //        List<School> schools = School.readSchools("School.csv");
 //        DataUtil.insertSchool(schools);
-        List<Student> updateStudentList = Student.readStudent("Student update.csv");
-        DataUtil.insertOrUpdateStudents(updateStudentList);
+//        List<Student> updateStudentList = Student.readStudent("Student update.csv");
+//        DataUtil.insertOrUpdateStudents(updateStudentList);
 
 //        List<Student> result = DataUtil.listByAge(18);
 //        System.out.println(result);
-
+        List<Student> studentsFromAptech = DataUtil.listStudentInSchool("Gina");
+        System.out.println(studentsFromAptech);
     }
 }

@@ -4,7 +4,6 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class DataUtil {
 
         PreparedStatement statement = connection.prepareStatement(
                 "INSERT INTO student_thodd (id,first_name,last_name,code,gender,school_code,dob, created_at, updated_at)" +
-                "VALUES (?,?,?,?,?,?,?,NOW(),NOW())");
+                        "VALUES (?,?,?,?,?,?,?,NOW(),NOW())");
         connection.setAutoCommit(false);
 
         for (Student s : students
@@ -142,7 +141,7 @@ public class DataUtil {
             LocalDate dob = resultSet.getDate("dob").toLocalDate();
             ZonedDateTime createdAt = resultSet.getTimestamp("created_at").toLocalDateTime().atZone(ZoneId.of("+07:00"));
             ZonedDateTime updatedAt = resultSet.getTimestamp("updated_at").toLocalDateTime().atZone(ZoneId.of("+07:00"));
-            studentListByAge.add(new Student(id, firstName, lastName, code, gender, schoolCode, dob, createdAt,updatedAt));
+            studentListByAge.add(new Student(id, firstName, lastName, code, gender, schoolCode, dob, createdAt, updatedAt));
 
         }
 
@@ -174,8 +173,8 @@ public class DataUtil {
                         "        updated_at = NOW();");
 
         connection.setAutoCommit(false);
-        for (Student s: students
-             ) {
+        for (Student s : students
+        ) {
             statement.setString(1, s.getFirstName());
             statement.setString(2, s.getLastName());
             statement.setString(3, s.getCode());
@@ -191,5 +190,65 @@ public class DataUtil {
         statement.close();
         connection.close();
 
+    }
+
+    public static List<Student> listStudentInSchool(String schoolName) throws ClassNotFoundException, SQLException, NoSuchFieldException {
+        Class.forName("org.postgresql.Driver");
+        Connection connection = DriverManager
+                .getConnection(
+                        "jdbc:postgresql://localhost:5432/jdbcSchool",
+                        "postgres",
+                        "123"
+                );
+        String searchString = "%" + schoolName + "%";
+        PreparedStatement statement = connection.prepareStatement(
+                "SELECT * FROM student_thodd st\n" +
+                        "                        JOIN school_thodd sc\n" +
+                        "                        ON st.school_code = sc.code\n" +
+                        "                        WHERE sc.name LIKE ?");
+
+        statement.setString(1, searchString);
+        ResultSet resultSet = statement.executeQuery();
+        List<Student> studentListBySchool = new ArrayList<>();
+
+        int id = 0;
+        while (resultSet.next()) {
+            id += 1;
+            String firstName = getInfo(resultSet,"firstName", "first_name");
+            String lastName = getInfo( resultSet,"lastName", "last_name");
+            String code = getInfo(resultSet,"code", "code");
+            Gender gender = getInfo(resultSet, "gender", "gender");
+            String schoolCode = getInfo(resultSet, "schoolCode", "school_code");
+
+
+//            String firstName = resultSet.getString("first_name");
+//            String lastName = resultSet.getString("last_name");
+//            String code = resultSet.getString("code");
+//            Gender gender = Gender.convert(resultSet.getString("gender"));
+//            String schoolCode = resultSet.getString("school_code");
+//            LocalDate dob = resultSet.getDate("dob").toLocalDate();
+//            ZonedDateTime createdAt = resultSet.getTimestamp("created_at").toLocalDateTime().atZone(ZoneId.of("+07:00"));
+//            ZonedDateTime updatedAt = resultSet.getTimestamp("updated_at").toLocalDateTime().atZone(ZoneId.of("+07:00"));
+//            studentListBySchool.add(new Student(id, firstName, lastName, code, gender, schoolCode, dob, createdAt, updatedAt));
+        }
+        statement.close();
+        connection.close();
+        return studentListBySchool;
+    }
+
+    public static <T> T getInfo( ResultSet resultSet,String fieldName, String columnName) throws SQLException, NoSuchFieldException {
+        String fieldType = Student.class.getDeclaredField(fieldName).getType().getSimpleName();
+        switch (fieldType) {
+            case "String":
+                return (T) resultSet.getString(columnName);
+            case "Gender":
+                return (T) Gender.convert(resultSet.getString(columnName));
+            case "LocalDate":
+                return (T) resultSet.getDate(columnName).toLocalDate();
+            case "ZonedDateTime":
+                return (T) resultSet.getTimestamp(columnName).toLocalDateTime().atZone(ZoneId.of("+07:00"));
+            default:
+                return null;
+        }
     }
 }
