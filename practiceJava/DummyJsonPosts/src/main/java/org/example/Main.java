@@ -2,6 +2,7 @@ package org.example;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -17,7 +18,7 @@ public class Main {
 //        System.out.println(pageOne);
 //        Post newPost = dummyController.create(post);
 //        System.out.println(newPost);
-            Post postOne = dummyController.delete(1);
+        Post postOne = dummyController.delete(1);
         System.out.println(postOne);
 
     }

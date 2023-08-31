@@ -3,17 +3,19 @@ package org.example;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Post{
-    public int id;
-    public String title;
-    public String body;
-    public int userId;
-    public ArrayList<String> tags;
-    public int reactions;
+    private Integer id;
+    private String title;
+    private String body;
+    private Integer userId;
+    private ArrayList<String> tags;
+    private Integer reactions;
 
 }

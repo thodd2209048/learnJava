@@ -31,14 +31,14 @@ public class DummyServices {
     }
 
     public List<Post> list(int page, int size) throws IOException {
-        Request request = new Request.Builder().url("https://dummyjson.com/posts").build();
+        Integer skip = (page - 1) * size;
+        String url = String.format("https://dummyjson.com/products?limit=%s&skip=%s", size, skip);
+        Request request = new Request.Builder().url(url).build();
         Response response = sendRequest(request);
         String responseString = response.body().string();
         PostResponse postResponse = convertJsonToObject(responseString, PostResponse.class);
 
-        return postResponse.getPosts().stream()
-                .filter(p -> p.getId() > (page - 1) * 10 && p.getId() <= page * 10)
-                .toList();
+        return postResponse.getPosts();
     }
 
     public Post create(Post post) throws IOException {
