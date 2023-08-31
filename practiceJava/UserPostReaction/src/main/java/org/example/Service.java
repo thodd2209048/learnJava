@@ -53,7 +53,6 @@ public class Service {
 
             postList.add(new Post(id,userId,publishedAt,content));
         }
-        System.out.println(postList);
 
         statement.close();
         return postList;
@@ -76,7 +75,6 @@ public class Service {
             reactionList.add(new Reaction(id, postId, userId, queryType));
         }
 
-        System.out.println(reactionList);
         statement.close();
         return reactionList;
     }
@@ -101,7 +99,6 @@ public class Service {
             userSet.add(new User(id, firstName, lastName, dob));
         }
         List<User> userList = new ArrayList<>(userSet);
-        System.out.println(userList);
 
         statement.close();
         return userList;
