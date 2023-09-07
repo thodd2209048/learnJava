@@ -84,7 +84,7 @@ public class Service {
         PreparedStatement statement = connection.prepareStatement(
                 "SELECT u.id AS user_id, u.first_name, u.last_name, u.dob, p.id AS post_id, r.id AS reaction_id" +
                         " FROM users_thodd u " +
-                        "JOIN reactions_thodd r ON u.id = r.post_id " +
+                        "JOIN reactions_thodd r ON u.id = r.user_id " +
                         "JOIN posts_thodd p ON r.post_id = p.id " +
                         "WHERE p.user_id = ? "
         );
