@@ -80,26 +80,26 @@ public class Service {
     }
 
     public List<User> listReactedUsers(int userId) throws SQLException {
-        Set<User> userSet = new HashSet<>();
         PreparedStatement statement = connection.prepareStatement(
-                "SELECT u.id AS user_id, u.first_name, u.last_name, u.dob, p.id AS post_id, r.id AS reaction_id" +
-                        " FROM users_thodd u " +
-                        "JOIN reactions_thodd r ON u.id = r.user_id " +
-                        "JOIN posts_thodd p ON r.post_id = p.id " +
-                        "WHERE p.user_id = ? "
+                " SELECT DISTINCT ucrt.id, urct.id AS user_reaction_id, urct.first_name, urct.last_name, urct.dob " +
+                        " FROM users_thodd ucrt " +
+                        " JOIN posts_thodd p ON ucrt.id = p.user_id " +
+                        " JOIN reactions_thodd r ON r.post_id = p.id " +
+                        " JOIN users_thodd urct ON r.user_id = urct.id" +
+                        " WHERE ucrt.id = ? "
         );
 
         statement.setInt(1, userId);
         ResultSet resultSet = statement.executeQuery();
+
+        List<User> userList = new ArrayList<>();
         while (resultSet.next()){
-            Integer id = resultSet.getInt("user_id");
+            Integer id = resultSet.getInt("user_reaction_id");
             String firstName = resultSet.getString("first_name");
             String lastName = resultSet.getString("last_name");
             LocalDate dob = resultSet.getDate("dob").toLocalDate();
-            userSet.add(new User(id, firstName, lastName, dob));
+            userList.add(new User(id, firstName, lastName, dob));
         }
-        List<User> userList = new ArrayList<>(userSet);
-
         statement.close();
         return userList;
     }

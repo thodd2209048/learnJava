@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         Service service = new Service();
 
-        service.listReactedUsers(1);
+        System.out.println(service.listReactedUsers(1));
 
         service.closeConnection();
     }

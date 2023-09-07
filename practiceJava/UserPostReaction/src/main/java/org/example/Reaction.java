@@ -14,6 +14,4 @@ public class Reaction {
     private Integer postId;
     private Integer userId;
     private Type type;
-
-
 }
