@@ -22,6 +22,9 @@ public class Main {
         List<Order> orders = readOrder("orders.csv");
         insertOrders(orders);
         insertOrdersWay2(orders);
+        DataUtil dataUtil = new DataUtil();
+        dataUtil.insertOrdersWay3(orders);
+        DataUtil.close();
     }
 
     public static User readRow(CSVRecord row) {
