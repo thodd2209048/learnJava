@@ -1,0 +1,201 @@
+id,user id,product,quantity
+1,74,"Champagne - Brights, Dry",6
+2,83,Cheese - Roquefort Pappillon,9
+3,54,Tequila Rose Cream Liquor,1
+4,90,Rye Special Old,6
+5,2,Bread Bowl Plain,2
+6,49,Water - Spring Water 500ml,4
+7,1,Chinese Foods - Pepper Beef,9
+8,27,Grapes - Red,3
+9,96,Food Colouring - Blue,9
+10,64,"Pepper - Green, Chili",4
+11,18,Cheese Cloth No 100,5
+12,55,Coffee - Egg Nog Capuccino,3
+13,76,Meldea Green Tea Liquor,8
+14,17,Pastry - Choclate Baked,3
+15,31,Compound - Mocha,10
+16,33,Wine - Pinot Grigio Collavini,8
+17,74,Wine - Gewurztraminer Pierre,8
+18,20,"Nut - Pecan, Pieces",4
+19,34,Cheese - Le Cru Du Clocher,4
+20,56,Vinegar - Balsamic,3
+21,78,"Lobster - Tail, 3 - 4 Oz",5
+22,63,"Cheese - Havarti, Salsa",8
+23,3,Lettuce - Romaine,10
+24,87,Neckerchief Blck,5
+25,33,"Orange - Canned, Mandarin",4
+26,16,Wine - Pinot Noir Mondavi Coastal,5
+27,52,"Cheese - Brie,danish",8
+28,68,Glaze - Clear,1
+29,90,"Wine - White, Riesling, Henry Of",10
+30,60,Chips - Potato Jalapeno,9
+31,57,Trueblue - Blueberry Cranberry,6
+32,52,Veal - Bones,4
+33,23,Cumin - Ground,9
+34,20,"Mushroom - Chantrelle, Fresh",8
+35,50,Cocoa Feuilletine,5
+36,53,Bread - Italian Sesame Poly,5
+37,36,Lid - 16 Oz And 32 Oz,5
+38,64,Rhubarb,10
+39,70,Dc - Sakura Fu,1
+40,71,"Wine - Red, Cabernet Sauvignon",5
+41,16,"Tortillas - Flour, 12",3
+42,94,Spic And Span All Purpose,8
+43,3,Sun - Dried Tomatoes,3
+44,5,Tuna - Fresh,3
+45,21,Pork - Inside,7
+46,21,Onion - Dried,8
+47,22,Wine - Pinot Noir Pond Haddock,1
+48,25,Soup - Campbells Pasta Fagioli,10
+49,87,Sour Puss Raspberry,1
+50,73,Cheese - Ermite Bleu,1
+51,99,Squash - Guords,5
+52,46,"Veal - Brisket, Provimi, Bone - In",6
+53,65,"Chocolate - Milk, Callets",7
+54,17,Waffle Stix,8
+55,54,Longos - Greek Salad,8
+56,60,Sproutsmustard Cress,8
+57,6,Cardamon Ground,3
+58,46,Plate Pie Foil,9
+59,63,Bread Base - Goodhearth,3
+60,21,Soup - Campbellschix Stew,6
+61,72,Duck - Whole,9
+62,68,Zucchini - Green,2
+63,52,"Sauce - Bernaise, Mix",9
+64,67,"Extract - Vanilla,artificial",3
+65,95,"Orange - Canned, Mandarin",2
+66,77,"Wine - White, Riesling, Semi - Dry",1
+67,73,Cookies - Englishbay Wht,6
+68,36,"Lobster - Baby, Boiled",5
+69,95,"Turkey - Breast, Double",2
+70,69,Grapes - Red,10
+71,19,Water - Evian 355 Ml,3
+72,41,Ecolab Digiclean Mild Fm,2
+73,29,Lettuce - Lolla Rosa,1
+74,19,Wine - Black Tower Qr,9
+75,58,Corn - Mini,7
+76,65,Cocktail Napkin Blue,6
+77,32,Kippers - Smoked,4
+78,83,Lime Cordial - Roses,3
+79,38,Cheese - Bocconcini,7
+80,15,Flower - Carnations,10
+81,57,Wiberg Cure,4
+82,16,Chicken Breast Wing On,8
+83,22,Ecolab - Power Fusion,6
+84,2,Hold Up Tool Storage Rack,4
+85,63,Chocolate - Semi Sweet,5
+86,36,Sausage - Breakfast,5
+87,44,Cheese - La Sauvagine,8
+88,26,Sesame Seed Black,7
+89,54,Nestea - Iced Tea,3
+90,99,"Tomatoes - Cherry, Yellow",10
+91,65,Coriander - Ground,2
+92,97,"Nut - Walnut, Pieces",3
+93,10,Cheese - Montery Jack,3
+94,51,Tamarillo,8
+95,1,Cookie Dough - Peanut Butter,1
+96,25,Rye Special Old,8
+97,12,Fireball Whisky,10
+98,62,"Pork - Loin, Bone - In",2
+99,64,"Wine - Red, Harrow Estates, Cab",5
+100,96,Flour - Fast / Rapid,5
+101,42,Mussels - Frozen,1
+102,67,Quiche Assorted,3
+103,2,"Brocolinni - Gaylan, Chinese",7
+104,97,Myers Planters Punch,2
+105,59,Cookie Choc,4
+106,7,Kiwi Gold Zespri,1
+107,82,Beans - French,5
+108,98,"Shrimp, Dried, Small / Lb",8
+109,85,"Chicken - Diced, Cooked",3
+110,15,"Bread - Pita, Mini",10
+111,44,Lettuce Romaine Chopped,5
+112,73,"Wine - Bourgogne 2002, La",3
+113,32,"Iced Tea - Lemon, 340ml",1
+114,49,Glycerine,10
+115,56,"Wine - Red, Wolf Blass, Yellow",4
+116,72,Cheese - Blue,1
+117,33,"Tortillas - Flour, 12",2
+118,92,"Basil - Primerba, Paste",9
+119,50,Vinegar - Rice,4
+120,27,Remy Red,5
+121,10,"Pasta - Fettuccine, Egg, Fresh",2
+122,57,Chinese Lemon Pork,3
+123,5,Lamb - Bones,10
+124,99,V8 - Berry Blend,7
+125,98,"Sole - Dover, Whole, Fresh",1
+126,64,"Wine - Red, Gallo, Merlot",7
+127,83,Eggplant - Baby,4
+128,51,Veal - Insides Provini,9
+129,66,Soup - Campbells,6
+130,21,Chivas Regal - 12 Year Old,7
+131,34,Appetizer - Escargot Puff,7
+132,62,Wine - Chenin Blanc K.w.v.,7
+133,81,"Lemonade - Strawberry, 591 Ml",7
+134,11,Chips - Potato Jalapeno,3
+135,82,Pepper - Pablano,6
+136,28,Spinach - Frozen,3
+137,47,Clam - Cherrystone,3
+138,52,"Soup - Knorr, French Onion",2
+139,86,Oil - Hazelnut,9
+140,59,Island Oasis - Peach Daiquiri,5
+141,43,"Split Peas - Yellow, Dry",10
+142,75,Onions Granulated,5
+143,56,Jolt Cola,4
+144,36,"Napkin - Dinner, White",1
+145,14,Bar - Sweet And Salty Chocolate,9
+146,22,Bar Special K,10
+147,30,Turnip - Wax,6
+148,67,Langers - Cranberry Cocktail,1
+149,14,Beans - Kidney White,4
+150,75,Muffins - Assorted,2
+151,77,Wine - Riesling Dr. Pauly,6
+152,10,Rosemary - Dry,4
+153,74,Longos - Assorted Sandwich,4
+154,30,Chinese Foods - Pepper Beef,8
+155,55,Calaloo,1
+156,2,Wine - Alicanca Vinho Verde,2
+157,64,Halibut - Fletches,4
+158,14,"Soup - Campbells, Spinach Crm",9
+159,24,Hand Towel,6
+160,71,Skewers - Bamboo,7
+161,24,Venison - Racks Frenched,2
+162,38,Lettuce - Boston Bib - Organic,7
+163,41,Pastry - Raisin Muffin - Mini,3
+164,78,Waffle Stix,2
+165,28,"Syrup - Monin, Swiss Choclate",2
+166,64,Glucose,7
+167,14,Oil - Avocado,7
+168,87,"Chocolate - Milk, Callets",5
+169,61,Ice Cream Bar - Drumstick,9
+170,80,Baking Soda,8
+171,2,Bouq All Italian - Primerba,4
+172,52,Sausage - Liver,5
+173,51,Onions - Red,6
+174,38,"Chilli Paste, Hot Sambal Oelek",2
+175,82,Savory,2
+176,23,Soap - Pine Sol Floor Cleaner,7
+177,99,Pastry - Chocolate Chip Muffin,4
+178,5,Liquid Aminios Acid - Braggs,10
+179,48,Eggplant - Asian,5
+180,30,Table Cloth - 53x69 Colour,4
+181,88,Wine - Cava Aria Estate Brut,4
+182,35,"Salmon - Atlantic, No Skin",8
+183,85,"Flour - Corn, Fine",2
+184,28,"Beef - Roasted, Cooked",2
+185,25,Sobe - Lizard Fuel,4
+186,34,Shrimp - 100 / 200 Cold Water,9
+187,98,Wine - Vovray Sec Domaine Huet,2
+188,78,Scallop - St. Jaques,3
+189,65,Sambuca - Opal Nera,4
+190,33,Cassis,9
+191,69,Silicone Parch. 16.3x24.3,4
+192,20,Snapple Raspberry Tea,7
+193,7,Sauce - Mint,10
+194,21,Kellogs Raisan Bran Bars,8
+195,74,Chocolate Liqueur - Godet White,8
+196,58,Wine - Riesling Dr. Pauly,3
+197,20,Halibut - Steaks,9
+198,82,Waffle Stix,10
+199,77,Wine - Puligny Montrachet A.,4
+200,83,Browning Caramel Glace,1

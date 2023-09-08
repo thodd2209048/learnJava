@@ -1,0 +1,3 @@
+1. Đưa những lỗi vào list<DataWarning>
+   Ví dụ class DataWarning có trường: id, fieldName
+2. Tạo bảng trong postgres với tên theo format: users_thodd. Tạo hàm void insertUsers(List<User> users)
