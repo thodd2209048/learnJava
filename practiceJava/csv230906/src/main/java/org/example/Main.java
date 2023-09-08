@@ -29,8 +29,11 @@ public class Main {
         String stringGender = row.get("gender");
         Gender gender = Gender.convert(stringGender);
 
-        if(stringId.isEmpty() || firstName.isEmpty()|| lastName.isEmpty()||email.isEmpty()|| stringGender.isEmpty()){
-            throw new RuntimeException("Invalid data");
+        for(String header : row.toMap().keySet()) {
+            String value = row.get(header);
+            if(value == null || value.isEmpty()){
+                throw new IllegalArgumentException (String.format("%s is empty", header));
+            }
         }
         return new User(id, firstName, lastName, email, gender);
     }
@@ -39,12 +42,10 @@ public class Main {
         return row.get(column);
     }
 
-    public static 
 
     public static List<User> readCsv(String filePath) throws IOException {
         String[] HEADERS = {"id", "first_name", "last_name", "email", "gender"};
         Reader in = new FileReader(filePath);
-//        CSVParser csvParser = new CSVParser(in, )
         CSVFormat csvFormat = CSVFormat.DEFAULT.builder()
                 .setHeader(HEADERS)
                 .setSkipHeaderRecord(true)
@@ -57,11 +58,10 @@ public class Main {
             try {
                 userList.add(readRow(record));
             } catch (Exception e) {
+                System.err.println("Error in record: " + record.toString());
                 e.printStackTrace();
             }
         }
-
-
         return userList;
     }
 }
